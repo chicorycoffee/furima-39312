@@ -12,60 +12,59 @@
 | first_name         | string | null: false               |
 | last_name_kana     | string | null: false               |
 | first_name_kana    | string | null: false               |
-| birth_date         | string | null: false               |
+| birth_date         | date   | null: false               |
 
 
 ## association
-has_many :items, dependent: :destroy
-has_many :user_items, dependent: :destroy
+has_many :items
+has_many :records
 
 
 ## items テーブル
 
-| Column              | Type       | Options                        |
-| ------------------- | -----------| ------------------------------ |
-| image               | string     | null: false                    |
-| item_name           | string     | null: false                    |
-| info                | text       | null: false                    |
-| category            | string     | null: false                    |
-| sales_status        | string     | null: false                    |
-| shipping_fee_status | string     | null: false                    |
-| item_prefecture     | string     | null: false                    |
-| scheduled_delivery  | string     | null: false                    |
-| price               | integer    | null: false                    |
-| user_id             | references | null: false, foreign_key: true |
+| Column                 | Type       | Options                        |
+| ---------------------- | -----------| ------------------------------ |
+| item_name              | string     | null: false                    |
+| info                   | text       | null: false                    |
+| category_id            | integer    | null: false                    |
+| sales_status_id        | integer    | null: false                    |
+| shipping_fee_status_id | integer    | null: false                    |
+| prefecture_id          | integer    | null: false                    |
+| scheduled_delivery_id  | integer    | null: false                    |
+| price                  | integer    | null: false                    |
+| user                   | references | null: false, foreign_key: true |
 
 
 ## association
 belongs_to :user
-has_one :user_item, dependent: :destroy
+has_one :record
 
 
 ## records テーブル
 
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
-| user_id   | references | null: false, foreign_key: true |
-| item_id   | references | null: false, foreign_key: true |
+| user      | references | null: false, foreign_key: true |
+| item      | references | null: false, foreign_key: true |
 
 
 ## association
 belongs_to :user
 belongs_to :item
-has_one :shipping, dependent: :destroy
+has_one :shipping
 
 
 ## shippings テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| postal_code  | integer    | null: false                    |
-| prefecture   | string     | null: false                    |
-| city         | string     | null: false                    |
-| addresses    | string     | null: false                    |
-| building     | string     |                                |
-| phone_number | integer    | null: false                    |
-| record_id    | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | string     | null: false                    |
+| prefecture_id | integer    | null: false                     |
+| city          | string     | null: false                    |
+| addresses     | string     | null: false                    |
+| building      | string     |                                |
+| phone_number  | string     | null: false                    |
+| record        | references | null: false, foreign_key: true |
 
 ## association
 belongs_to :record
