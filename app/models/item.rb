@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   validates :info, presence: true
   validates :image, presence: true
   validates :price, presence: true,
-                    numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'は半角数字で、￥300〜￥9,999,999の間で設定してください' }
+                    numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, only_integer: true, message: 'は半角数字で、￥300〜￥9,999,999の間で設定してください' }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
