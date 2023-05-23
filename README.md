@@ -17,7 +17,7 @@
 
 ## association
 has_many :items
-has_many :records
+has_many :orders
 
 
 ## items テーブル
@@ -37,10 +37,10 @@ has_many :records
 
 ## association
 belongs_to :user
-has_one :record
+has_one :order
 
 
-## records テーブル
+## orders テーブル
 
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
@@ -59,12 +59,12 @@ has_one :shipping
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | postal_code   | string     | null: false                    |
-| prefecture_id | integer    | null: false                     |
+| prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | addresses     | string     | null: false                    |
 | building      | string     |                                |
 | phone_number  | string     | null: false                    |
-| record        | references | null: false, foreign_key: true |
+| order         | references | null: false, foreign_key: true |
 
 ## association
-belongs_to :record
+belongs_to :order
