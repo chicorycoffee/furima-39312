@@ -5,6 +5,8 @@ set :application, 'furima-39312'
 
 set :repo_url,  'git@github.com:chicorycoffee/furima-39312.git'
 
+set :branch, "main"
+
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
 set :rbenv_type, :user
